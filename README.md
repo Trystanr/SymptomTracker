@@ -1,5 +1,5 @@
 # SymptomTracker
-##IDV300 Term 2
+### IDV300 Term 2
 
 ### Install Prerequisites
 `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
