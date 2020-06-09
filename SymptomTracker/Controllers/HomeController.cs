@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SQLitePCL;
 using SymptomTracker.Models;
 
 namespace SymptomTracker.Controllers
@@ -23,6 +25,8 @@ namespace SymptomTracker.Controllers
             return View();
         }
 
+        // Test authorization of privacy page
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
