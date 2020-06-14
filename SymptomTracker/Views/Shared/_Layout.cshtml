@@ -12,49 +12,47 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <!--
     <link rel="stylesheet" href="~/css/styles.css" />
+    -->
 </head>
 <body id="page-top">
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger text-black" asp-area="" asp-controller="Home" asp-action="Index">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container" id="main-nav">
+            <a class="navbar-brand js-scroll-trigger text-white" asp-area="" asp-controller="Home" asp-action="Index">
                 Symptom Tracker
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu<i class="fas fa-bars"></i>
+                <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Symptoms" asp-action="">Symptoms</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Symptoms" asp-action="">Symptoms</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
+
+                    <li id="nav-seperator" class=".d-none .d-lg-block .d-xl-block"></li>
+
+                    <partial name="_LoginPartial" />
                 </ul>
-                <partial name="_LoginPartial" />
             </div>
         </div>
     </nav>
 
     @RenderBody()
 
-    <!--
-    <footer class="footer bg-black small text-center text-white-50">
-        <div class="container">
-            Copyright © Your Website 2020
-        </div>
-    </footer>
-    -->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/script.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/script.js" asp-append-version="true"></script>
+@RenderSection("Scripts", required: false)
 </body>
 </html>

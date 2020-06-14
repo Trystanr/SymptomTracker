@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SymptomTracker.Data;
 
 namespace SymptomTracker.Migrations
 {
     [DbContext(typeof(MvcSymptomContext))]
-    partial class MvcSymptomContextModelSnapshot : ModelSnapshot
+    [Migration("20200614184555_Relating-Data")]
+    partial class RelatingData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

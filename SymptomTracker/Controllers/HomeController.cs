@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SQLitePCL;
+using SymptomTracker.Factory;
 using SymptomTracker.Models;
 
 namespace SymptomTracker.Controllers
@@ -29,6 +31,14 @@ namespace SymptomTracker.Controllers
         [Authorize]
         public IActionResult Privacy()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewData["UserID"] = User.FindFirst(type: ClaimTypes.NameIdentifier).Value;
+                ViewData["UserName"] = User.FindFirst("lastname").Value;
+                ViewData["UserDOB"] = User.FindFirst("dob").Value;
+
+                return View();
+            }
             return View();
         }
 

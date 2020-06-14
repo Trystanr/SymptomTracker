@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,19 +17,32 @@ namespace SymptomTracker.Controllers
     public class SymptomsController : Controller
     {
         private readonly MvcSymptomContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public SymptomsController(MvcSymptomContext context)
+        public SymptomsController(MvcSymptomContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Symptoms
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Symptom.ToListAsync());
+            if (User.Identity.IsAuthenticated)
+            {
+                string id = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                IEnumerable<Symptom> symptoms = _context.Symptom.Where(symptom => symptom.OwnerId == id).ToList();
+
+                return View(symptoms);
+            }
+            // return View(await _context.Symptom.ToListAsync());
+            return NotFound();
         }
 
         // GET: Symptoms/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,6 +61,7 @@ namespace SymptomTracker.Controllers
         }
 
         // GET: Symptoms/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -53,20 +70,30 @@ namespace SymptomTracker.Controllers
         // POST: Symptoms/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Body,RecordDate")] Symptom symptom)
+        public async Task<IActionResult> Create([Bind("Id,Title,Body,RecordDate")] Symptom symptomModel)
         {
             if (ModelState.IsValid)
             {
+                var symptom = new Symptom
+                {
+                    Title = symptomModel.Title,
+                    Body = symptomModel.Body,
+                    RecordDate = symptomModel.RecordDate,
+                    Owner = _userManager.GetUserAsync(User).Result
+                };
+
                 _context.Add(symptom);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(symptom);
+            return View(symptomModel);
         }
 
         // GET: Symptoms/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,6 +112,7 @@ namespace SymptomTracker.Controllers
         // POST: Symptoms/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body")] Symptom symptom)
@@ -118,6 +146,7 @@ namespace SymptomTracker.Controllers
         }
 
         // GET: Symptoms/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,6 +165,7 @@ namespace SymptomTracker.Controllers
         }
 
         // POST: Symptoms/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -25,6 +25,7 @@ namespace SymptomTracker.Data
         }
 
         public DbSet<Symptom> Symptom { get; set; }
+        public DbSet<User> User { get; set; }
 
     }
 }

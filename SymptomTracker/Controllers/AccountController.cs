@@ -40,7 +40,8 @@ namespace SymptomTracker.Controllers
                 FirstName = userModel.FirstName,
                 LastName = userModel.LastName,
                 UserName = userModel.Email,
-                Email = userModel.Email
+                Email = userModel.Email,
+                DateOfBirth = userModel.DateOfBirth
             };
 
             var result = await _userManager.CreateAsync(user, userModel.Password);

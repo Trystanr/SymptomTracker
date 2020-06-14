@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SymptomTracker.Data;
 
 namespace SymptomTracker.Migrations
 {
     [DbContext(typeof(MvcSymptomContext))]
-    partial class MvcSymptomContextModelSnapshot : ModelSnapshot
+    [Migration("20200614180123_DobClaim")]
+    partial class DobClaim
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace SymptomTracker.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "49f5e96d-332f-4ba1-9bf5-ff35781bcd4a",
-                            ConcurrencyStamp = "fa06f1d3-d183-4030-b711-8f1b856887ce",
+                            Id = "745cca22-1d6b-4a84-8b06-5ea119240fdc",
+                            ConcurrencyStamp = "28a07baa-aa60-4e11-b881-751f7dd38a0d",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "9ec292ab-1bb2-40c3-ace2-f686591a0e42",
-                            ConcurrencyStamp = "b4116b34-75d5-419c-bdd7-01ae82c09365",
+                            Id = "4d561afe-d2e9-490f-9e54-3b3681e4064e",
+                            ConcurrencyStamp = "0e758ad5-87b0-40b0-83e1-a6d14f0b24dc",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         });
@@ -176,9 +178,6 @@ namespace SymptomTracker.Migrations
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OwnerId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("RecordDate")
                         .HasColumnType("datetime2");
 
@@ -186,8 +185,6 @@ namespace SymptomTracker.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OwnerId");
 
                     b.ToTable("Symptom");
                 });
@@ -315,13 +312,6 @@ namespace SymptomTracker.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SymptomTracker.Models.Symptom", b =>
-                {
-                    b.HasOne("SymptomTracker.Models.User", "Owner")
-                        .WithMany("Symptoms")
-                        .HasForeignKey("OwnerId");
                 });
 #pragma warning restore 612, 618
         }

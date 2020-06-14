@@ -14,5 +14,8 @@ namespace SymptomTracker.Models
 
         [DataType(DataType.Date)]
         public DateTime RecordDate { get; set; }
+
+        public string OwnerId { get; set; }
+        public User Owner { get; set; }
     }
 }

@@ -10,3 +10,5 @@
 `Add-Migration InitialCreate`
 
 `Update-Database`
+
+https://dribbble.com/shots/8574337/attachments/841004?mode=media
