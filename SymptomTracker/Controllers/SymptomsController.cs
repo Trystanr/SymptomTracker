@@ -73,7 +73,7 @@ namespace SymptomTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Body,RecordDate")] Symptom symptomModel)
+        public async Task<IActionResult> Create([Bind("Id,Title,Body,WellBeing,ChestPain,RecordDate")] Symptom symptomModel)
         {
             if (ModelState.IsValid)
             {
@@ -82,6 +82,8 @@ namespace SymptomTracker.Controllers
                     Title = symptomModel.Title,
                     Body = symptomModel.Body,
                     RecordDate = symptomModel.RecordDate,
+                    WellBeing = symptomModel.WellBeing,
+                    ChestPain = symptomModel.ChestPain,
                     Owner = _userManager.GetUserAsync(User).Result
                 };
 

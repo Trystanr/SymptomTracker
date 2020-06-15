@@ -7,44 +7,94 @@
 <div class="jumbotron">
     <div class="container">
         <h1 class="display-4 pt-lg-5">Your Symptoms</h1>
-        <p class="lead">This is a list of your logged symptoms.</p>
+        <p class="lead">This is your history of logged symptoms.</p>
     </div>
 </div>
 
 <div class="container">
-    <h1>Index</h1>
 
     <p>
-        <a asp-action="Create" class="btn btn-outline-primary btn-symptom">Create New</a>
+        <a asp-action="Create" class="btn btn-outline-primary btn-symptom">Log Symptoms</a>
     </p>
 
 
-        @for (var i = 0; i < Model.Count(); i++)
-        {
+    <div id='calendar' style="margin-bottom:40px;"></div>
 
-            if ((i % 3) == 0 || i == 0)
-            {
-                @Html.Raw("<div class='card-deck'>");
-            }
+    <script>
+        @foreach (var Item in Model) {
 
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => Model.ElementAt(i).Title)</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => Model.ElementAt(i).Body)</h6>
-                    <p class="card-text">@Html.DisplayFor(modelItem => Model.ElementAt(i).RecordDate)</p>
+        /* @Html.Raw("console.log('Model "+Item.Title+", "+Item.WellBeing+", "+Item.RecordDate+ "');") */
 
-                    <a class="card-link" asp-action="Edit" asp-route-id="@Model.ElementAt(i).Id">Edit</a>
-                    <a class="card-link" asp-action="Details" asp-route-id="@Model.ElementAt(i).Id">Details</a>
-                    <a class="card-link" asp-action="Delete" asp-route-id="@Model.ElementAt(i).Id">Delete</a>
-                </div>
-            </div>
 
-            if ((i % 3) == 2 || i== Model.Count() -1)
-            {
-                @Html.Raw("</div>");
-                
-            }
         }
+
+        @Html.Raw("document.addEventListener('DOMContentLoaded', function() {")
+
+        @Html.Raw(" var calendarEl = document.getElementById('calendar');")
+
+        @Html.Raw(" var calendar = new FullCalendar.Calendar(calendarEl, {")
+        @Html.Raw("     height: 300,")
+        @Html.Raw("     themeSystem: 'cyborg',")
+        @Html.Raw("     defaultView: 'dayGridWeek',")
+        @Html.Raw("     plugins: [ 'bootstrap','dayGrid' ],")
+        @Html.Raw("     events: [")
+
+        @foreach (var Item in Model)
+        {
+            @Html.Raw("         {")
+            @Html.Raw("             title: '"+Item.WellBeing+"',")
+            @Html.Raw("             url: 'Symptoms/Details/" + Item.Id+"',")
+            @Html.Raw("             start: '"+Item.RecordDate.ToShortDateString().Replace('/','-')+"'");
+            @Html.Raw("         },")
+        }
+
+        @Html.Raw("     ]")
+        @Html.Raw(" });")
+
+        @Html.Raw(" calendar.render();")
+        @Html.Raw("});")
+    </script>
+
+    @for (var i = 0; i < Model.Count(); i++)
+    {
+
+        if ((i % 3) == 0 || i == 0)
+        {
+            @Html.Raw("<div class='card-deck'>");
+        }
+
+        <div class="card" data-wb="@Html.DisplayFor(modelItem => Model.ElementAt(i).WellBeing)">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Edit" asp-route-id="@Model.ElementAt(i).Id">Edit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Delete" asp-route-id="@Model.ElementAt(i).Id">Delete</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => Model.ElementAt(i).Title)</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => Model.ElementAt(i).Body)</h6>
+                <!--
+                <p class="card-text">@Html.DisplayFor(modelItem => Model.ElementAt(i).RecordDate)</p>
+                -->
+
+                <a class="btn btn-primary float-right" asp-action="Details" asp-route-id="@Model.ElementAt(i).Id">Details</a>
+
+            </div>
+            <div class="card-footer text-muted">
+                <time class="timeago" datetime="@Html.DisplayFor(modelItem => Model.ElementAt(i).RecordDate)">Time</time>
+            </div>
+        </div>
+
+        if ((i % 3) == 2 || i == Model.Count() - 1)
+        {
+            @Html.Raw("</div>");
+
+        }
+    }
 
 
 </div>

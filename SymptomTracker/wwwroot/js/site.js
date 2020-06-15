@@ -1,51 +1,51 @@
-    (function ($) {
+(function ($) {
     "use strict"; // Start of use strict
 
-    // Smooth scrolling using jQuery easing
-    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
-        if (
-            location.pathname.replace(/^\//, "") ==
-                this.pathname.replace(/^\//, "") &&
-            location.hostname == this.hostname
-        ) {
-            var target = $(this.hash);
-            target = target.length
-                ? target
-                : $("[name=" + this.hash.slice(1) + "]");
-            if (target.length) {
-                $("html, body").animate(
-                    {
-                        scrollTop: target.offset().top - 70,
-                    },
-                    1000,
-                    "easeInOutExpo"
-                );
-                return false;
+
+    var slider = document.getElementById("wb-range");
+    if (slider !== null) {
+        var output = document.getElementById("wb-input");
+        var status = document.getElementById("wb-status-text");
+
+        output.innerHTML = slider.value;
+
+        document.getElementById("RecordDate").valueAsDate = new Date()
+       
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function () {
+            var slideValue = this.value;
+            output.value = slideValue;
+
+            console.log(slideValue);
+
+            if (slideValue == 0) {
+                status.textContent = "Terrible";
+                slider.dataset.status = "0";
+            } else if (slideValue == 20) {
+                status.textContent = "Uneasy";
+                slider.dataset.status = "1";
+            } else if (slideValue == 40) {
+                status.textContent = "Marginal";
+                slider.dataset.status = "2";
+            } else if (slideValue == 60) {
+                status.textContent = "Okay";
+                slider.dataset.status = "3";
+            } else if (slideValue == 80) {
+                status.textContent = "Well";
+                slider.dataset.status = "4";
+            } else {
+                status.textContent = "Incredible";
+                slider.dataset.status = "5";
             }
+
         }
-    });
+    }
 
-    // Closes responsive menu when a scroll trigger link is clicked
-    $(".js-scroll-trigger").click(function () {
-        $(".navbar-collapse").collapse("hide");
-    });
 
-    // Activate scrollspy to add active class to navbar items on scroll
-    $("body").scrollspy({
-        target: "#mainNav",
-        offset: 100,
+    jQuery(document).ready(function () {
+        jQuery("time.timeago").timeago();
     });
+    
+    
 
-    // Collapse Navbar
-    var navbarCollapse = function () {
-        if ($("#mainNav").offset().top > 100) {
-            $("#mainNav").addClass("navbar-shrink");
-        } else {
-            $("#mainNav").removeClass("navbar-shrink");
-        }
-    };
-    // Collapse now if page is not at top
-    navbarCollapse();
-    // Collapse the navbar when page is scrolled
-    $(window).scroll(navbarCollapse);
 })(jQuery); // End of use strict

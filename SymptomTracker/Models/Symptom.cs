@@ -12,6 +12,9 @@ namespace SymptomTracker.Models
         public string Title { get; set; }
         public string Body { get; set; }
 
+        public int WellBeing { get; set; }
+        public bool ChestPain { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime RecordDate { get; set; }
 

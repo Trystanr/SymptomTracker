@@ -171,10 +171,11 @@ C:\Users\User\source\repos\SymptomTracker\SymptomTracker\bin\Debug\netcoreapp3.1
 C:\Users\User\source\repos\SymptomTracker\SymptomTracker\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\User\source\repos\SymptomTracker\SymptomTracker\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\User\source\repos\SymptomTracker\SymptomTracker\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-C:\Users\User\source\repos\SymptomTracker\SymptomTracker\obj\Debug\netcoreapp3.1\SymptomTracker.csproj.CoreCompileInputs.cache
-C:\Users\User\source\repos\SymptomTracker\SymptomTracker\obj\Debug\netcoreapp3.1\SymptomTracker.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\source\repos\SymptomTracker\SymptomTracker\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\User\source\repos\SymptomTracker\SymptomTracker\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\User\source\repos\SymptomTracker\SymptomTracker\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\User\source\repos\SymptomTracker\SymptomTracker\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\User\source\repos\SymptomTracker\SymptomTracker\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\User\source\repos\SymptomTracker\SymptomTracker\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.BrowserLink.dll
+C:\Users\User\source\repos\SymptomTracker\SymptomTracker\obj\Debug\netcoreapp3.1\SymptomTracker.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\SymptomTracker\SymptomTracker\obj\Debug\netcoreapp3.1\SymptomTracker.MvcApplicationPartsAssemblyInfo.cache

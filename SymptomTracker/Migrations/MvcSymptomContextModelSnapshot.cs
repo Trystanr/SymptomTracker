@@ -48,15 +48,15 @@ namespace SymptomTracker.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "49f5e96d-332f-4ba1-9bf5-ff35781bcd4a",
-                            ConcurrencyStamp = "fa06f1d3-d183-4030-b711-8f1b856887ce",
+                            Id = "84407c45-524b-4001-ace1-dfef52870180",
+                            ConcurrencyStamp = "825b95e5-0a25-45a0-a77e-65c63683a4af",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "9ec292ab-1bb2-40c3-ace2-f686591a0e42",
-                            ConcurrencyStamp = "b4116b34-75d5-419c-bdd7-01ae82c09365",
+                            Id = "7cbb270c-90e0-40df-939b-932bb3230490",
+                            ConcurrencyStamp = "940126cc-90da-416c-9ccf-b6fd00752fd5",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         });
@@ -176,6 +176,9 @@ namespace SymptomTracker.Migrations
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("ChestPain")
+                        .HasColumnType("bit");
+
                     b.Property<string>("OwnerId")
                         .HasColumnType("nvarchar(450)");
 
@@ -184,6 +187,9 @@ namespace SymptomTracker.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("WellBeing")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

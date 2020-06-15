@@ -55,7 +55,7 @@ namespace SymptomTracker.Controllers
                 return View(userModel);
             }
             await _userManager.AddToRoleAsync(user, "Patient");
-
+            
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 

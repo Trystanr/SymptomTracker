@@ -9,8 +9,7 @@
         <a class="nav-link text-light dropdown-toggle" id="dropdownMenuButton" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome @User.FindFirst("firstname").Value</a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <h6 class="dropdown-header">Account</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-white" href="#">Action</a>
+            <!-- <a class="dropdown-item text-white" href="#">Action</a> -->
             <div class="dropdown-divider"></div>
             <form class="form-inline" asp-controller="Account" asp-action="Logout">
                 <button type="submit" class="dropdown-item" id="btn-logout">Logout</button>

@@ -7,6 +7,7 @@
 
 <div class="jumbotron">
     <div class="container">
+        <a asp-action="Index">< Back to Symptom List</a>
         <h1 class="display-4 pt-lg-5">Log Symptoms</h1>
         <p class="lead">Log your symptoms for today.</p>
     </div>
@@ -14,7 +15,7 @@
 
 <div class="container">
 
-     <div class="row">
+    <div class="row">
         <div class="col-md-4">
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -36,14 +37,51 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label">How are you feeling today?</label>
+                    <label for="wb-range" style="width: 100%">
+                        <input class="form-control-range" type="range" name="wb-range" id="wb-range" min="0" max="100" step="20" value="60" data-status="3" />
+                    </label>
+                    <input id="wb-input" asp-for="WellBeing" type="number" value="60" style="visibility: hidden; height: 0;" />
+                    <div id="wb-status">
+                        <span id="wb-status-text">Okay</span>
+                    </div>
+                    <span asp-validation-for="WellBeing" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <p class="control-label" style="margin-bottom:4px">
+                        Are you experiencing any of the following?
+
+                        <ul>
+                            <li>
+                                Severe, constant chest pain or pressure
+                            </li>
+                            <li>
+                                Extreme difficulty breathing
+                            </li>
+                            <li>
+                                Severe, constant lightheadedness
+                            </li>
+                            <li>
+                                Serious disorientation or unresponsiveness
+                            </li>
+                        </ul>
+                    </p>
+
+                    <fieldset id="RG-CP">
+                        <input type="radio" value="true" id="RG-CP-2" asp-for="ChestPain">
+                        <label for="RG-CP-2">Yes</label>
+                        <input type="radio" value="false" id="RG-CP-1" asp-for="ChestPain">
+                        <label for="RG-CP-1">No</label>
+                    </fieldset>
+                    <span asp-validation-for="ChestPain" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
             </form>
         </div>
-    </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
     </div>
 
 </div>

@@ -4,11 +4,21 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="jumbotron">
+    <div class="container">
+        <a asp-action="Index">< Back to Symptom List</a>
+        <h1 class="display-4 pt-lg-5">Details</h1>
+        <p class="lead">Details on your symptom for (this day).</p>
+    </div>
+</div>
 
-<div>
-    <h4>Symptom</h4>
-    <hr />
+<div class="container">
+    <div class="container mb-2">
+        <div class="row">
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        </div>
+    </div>
+
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
@@ -23,14 +33,23 @@
             @Html.DisplayFor(model => model.Body)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WellBeing)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WellBeing)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChestPain)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChestPain)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.RecordDate)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.RecordDate)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
 </div>
