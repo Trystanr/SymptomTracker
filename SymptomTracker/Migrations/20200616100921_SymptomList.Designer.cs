@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SymptomTracker.Data;
 
 namespace SymptomTracker.Migrations
 {
     [DbContext(typeof(MvcSymptomContext))]
-    partial class MvcSymptomContextModelSnapshot : ModelSnapshot
+    [Migration("20200616100921_SymptomList")]
+    partial class SymptomList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace SymptomTracker.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e302f95a-5b6e-4628-a9d6-569f99c7cc0e",
-                            ConcurrencyStamp = "ca436508-c919-4215-b181-f1df6916d8ea",
+                            Id = "8e2cafb2-1b84-41c7-8b56-fcc999e68f8b",
+                            ConcurrencyStamp = "4f913d65-c81b-4aac-899c-a67ef1e7fefb",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "8fa47651-5a6c-493a-a0ca-3fef11d8479a",
-                            ConcurrencyStamp = "a4a23e77-445e-498f-a771-1a316d34f513",
+                            Id = "e0c2dab3-257c-4611-bee8-106afa5b6e12",
+                            ConcurrencyStamp = "457ca011-c464-4bcc-a2de-af2c829d5da6",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         });

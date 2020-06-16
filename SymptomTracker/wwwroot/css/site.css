@@ -60,7 +60,7 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 0;
 }
 
 .footer {
@@ -90,7 +90,7 @@ a, a:hover {
 .jumbotron {
     background-color: #272B34;
 
-    padding-top: 70px;
+    padding-top: 90px;
 }
 
 
@@ -207,6 +207,15 @@ a, a:hover {
     color: #fff;
     border-color: #fff;
     border: 1px dashed #ffffff42;
+}
+
+.nav-tabs .nav-link {
+    padding: 10px 6px;
+    color: #fff;
+}
+
+.nav-tabs .fa-trash {
+    color: #ab2e13;
 }
 
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
@@ -359,6 +368,28 @@ a, a:hover {
     background-color: #272b34;
 }
 
+#CG-SL input[type=checkbox]{
+    visibility: hidden;
+    padding: 0;
+    margin: 0;
+    height: 0;
+}
+
+#CG-SL input[type=checkbox]:checked + label {
+    background-color: #272b34;
+
+}
+
+#CG-SL label {
+    display: block;
+    background-color: transparent;
+    border: 1px solid #ced4da63;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: -22px;
+}
+
 
 
 /* BUTTONS */
@@ -387,6 +418,17 @@ a, a:hover {
     border-color: #26FF75;
 }
 
+.btn-outline-secondary {
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-outline-secondary:hover {
+    color: #272B34;
+    background-color: #fff;
+    border-color: #fff;
+}
+
 
 
 /* TABLE */
@@ -394,10 +436,12 @@ a, a:hover {
 .fc-unthemed th, .fc-unthemed td, .fc-unthemed thead, .fc-unthemed tbody, .fc-unthemed .fc-divider, .fc-unthemed .fc-row, .fc-unthemed .fc-content, .fc-unthemed .fc-popover, .fc-unthemed .fc-list-view, .fc-unthemed .fc-list-heading td {
     border-color: #50535A;
     background-color: #272B34;
+    background-color: transparent;
 }
 
 .fc-unthemed td.fc-today {
     background: #212327;
+    background-color: transparent;
 }
 
 .fc .fc-row .fc-content-skeleton table, .fc .fc-row .fc-content-skeleton td, .fc .fc-row .fc-mirror-skeleton td {
@@ -409,6 +453,85 @@ a, a:hover {
     padding-left: 4px;
 }
 
+
+
+.fc-event, .fc-event-dot {
+    background-color: #272b34;
+    border: 1px solid #272B34;
+}
+
+.fc-toolbar h2 {
+    font-weight: 300;
+}
+
+.fc-day-header {
+    font-weight: 300;
+}
+
 .fc-button {
     background-color: #272B34;
+    border: 0;
+    box-shadow: none;
+}
+
+.fc-button-primary:hover {
+    color: #fff;
+    background-color: #1e2b37;
+    border-color: #272B34;
+}
+
+.fc-button-primary:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.fc-button-primary:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.fc-button-primary:disabled {
+    background-color: transparent;
+}
+
+
+/* HOMEPAGE */
+
+.bg-dark {
+    background-color: #272B34 !important;
+}
+.carousel-item {
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.icon-box {
+    background-color: #383C47;
+    display: inline-block;
+    padding: 25px 25px;
+    height: 100px;
+    width: 100px;
+    border-radius: 999px;
+}
+
+
+
+
+/* DISPLAY */
+
+dt, dd {
+    
+}
+dt{
+    font-weight: 500;
+}
+
+#symp-det hr {
+    border-top: 1px solid rgba(255,255,255,.4);
+    width: 100%;
 }

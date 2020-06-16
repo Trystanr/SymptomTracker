@@ -73,17 +73,17 @@ namespace SymptomTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Body,WellBeing,ChestPain,RecordDate")] Symptom symptomModel)
+        public async Task<IActionResult> Create([Bind("Id,Body,WellBeing,ChestPain,SymptomList,RecordDate")] Symptom symptomModel)
         {
             if (ModelState.IsValid)
             {
                 var symptom = new Symptom
                 {
-                    Title = symptomModel.Title,
                     Body = symptomModel.Body,
                     RecordDate = symptomModel.RecordDate,
                     WellBeing = symptomModel.WellBeing,
                     ChestPain = symptomModel.ChestPain,
+                    SymptomList = symptomModel.SymptomList,
                     Owner = _userManager.GetUserAsync(User).Result
                 };
 
@@ -117,7 +117,7 @@ namespace SymptomTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body")] Symptom symptom)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Body,WellBeing,ChestPain,SymptomList,RecordDate")] Symptom symptom)
         {
             if (id != symptom.Id)
             {

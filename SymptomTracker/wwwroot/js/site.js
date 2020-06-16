@@ -1,6 +1,10 @@
 (function ($) {
     "use strict"; // Start of use strict
 
+    function setCharAt(str, index, chr) {
+        if (index > str.length - 1) return str;
+        return str.substr(0, index) + chr + str.substr(index + 1);
+    }
 
     var slider = document.getElementById("wb-range");
     if (slider !== null) {
@@ -44,7 +48,37 @@
 
     jQuery(document).ready(function () {
         jQuery("time.timeago").timeago();
+
+
+        $("#CG-SL input[type='checkbox']").change(function () {
+
+            var symptomString = "00000000";
+
+
+            $("#CG-SL input[type='checkbox']").each(function (index) {
+            
+                if (this.checked) {
+                    if (index != 7) {
+                        symptomString = setCharAt(symptomString, index, "1")
+                    } else {
+                        console.log("none of the above");
+                        symptomString = "00000001";
+            
+                        $("#CG-SL input[type='checkbox']").each(function (index) {
+                            if (index == 7) {
+                                $(this).prop('checked', true);
+                            } else {
+                                $(this).prop('checked', false);
+                            }
+                        });
+                    }
+                }
+            
+            }).promise().done(function () { $("#sl-input").val(symptomString); });
+
+        });
     });
+
     
     
 

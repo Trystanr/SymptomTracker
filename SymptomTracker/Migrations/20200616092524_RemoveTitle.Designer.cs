@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SymptomTracker.Data;
 
 namespace SymptomTracker.Migrations
 {
     [DbContext(typeof(MvcSymptomContext))]
-    partial class MvcSymptomContextModelSnapshot : ModelSnapshot
+    [Migration("20200616092524_RemoveTitle")]
+    partial class RemoveTitle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace SymptomTracker.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e302f95a-5b6e-4628-a9d6-569f99c7cc0e",
-                            ConcurrencyStamp = "ca436508-c919-4215-b181-f1df6916d8ea",
+                            Id = "2e4a8c5b-5707-4b9e-b776-253e98a6634e",
+                            ConcurrencyStamp = "2409bdba-c2ba-4450-945f-d37ceca523bf",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "8fa47651-5a6c-493a-a0ca-3fef11d8479a",
-                            ConcurrencyStamp = "a4a23e77-445e-498f-a771-1a316d34f513",
+                            Id = "e4cfe9c9-a52a-44d1-9003-fdef3ee6e48a",
+                            ConcurrencyStamp = "0b92c72e-b2bb-42c2-a352-bc4f6901e008",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         });
@@ -184,9 +186,6 @@ namespace SymptomTracker.Migrations
 
                     b.Property<DateTime>("RecordDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("SymptomList")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("WellBeing")
                         .HasColumnType("int");

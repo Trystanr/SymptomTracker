@@ -1,6 +1,11 @@
 # SymptomTracker
 ### IDV300 Term 2
 
+Track Symptoms
+Keep yourself safe and start tracking your symptoms today.
+
+
+
 #### Install Prerequisites
 `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
 
@@ -17,6 +22,10 @@ https://docs.microsoft.com/en-us/aspnet/core/client-side/using-browserlink?view=
 https://stackoverflow.com/questions/40729535/how-to-stop-browser-closing-automatically-when-you-stop-debugging-on-vs-2017
 https://gitlab.com/RuanDeNecker/dotnetcore-example-todo/
 
+
+https://www.chihealth.com/en/patients-visitors/coronavirus-covid-19/Coronavirusquestionnaire.html
+https://www.apple.com/covid19/
+https://www.google.com/search?q=coronavirus+screening+questions&rlz=1C1MSIM_enZA738ZA738&hl=en&sxsrf=ALeKk02Ay88-BeEBVKqdNwAH9FSWGHs3CA:1592233661608&source=lnms&tbm=isch&sa=X&ved=2ahUKEwius7LOjITqAhXMaRUIHUJqAqwQ_AUoAXoECBUQAw&biw=1920&bih=937#imgrc=15QKHwdCkSFK6M&imgdii=Azc3SnbBgh7BoM
 
 Used BrowserLink in development environment
 

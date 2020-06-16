@@ -1,89 +1,127 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto text-center">
-            <h1 class="mx-auto my-0 text-uppercase">Symptom Tracker</h1>
-            <h2 class="text-white-50 mx-auto mt-2 mb-5">Keep yourself safe and start tracking your symptoms today.</h2>
-            <a class="btn btn-primary" asp-area="" asp-controller="Symptoms" asp-action="">Get Started</a>
+<header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/fAiQRv7FgE0/1920x1080')">
+                <div class="carousel-caption d-md-block">
+                    <h2 class="display-4">Stay Safe</h2>
+                    <p class="lead">Track your symptoms.</p>
+                </div>
+            </div>
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url('https://source.unsplash.com/LThqAPBpqtI/1920x1080')">
+                <div class="carousel-caption d-md-block">
+                    <h2 class="display-4">Confirm Your Status</h2>
+                    <p class="lead">Get the help you need, when you need it.</p>
+                </div>
+            </div>
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url('https://source.unsplash.com/z2v23KWm5D0/2953×3937'); background-position: center">
+                <div class="carousel-caption d-md-block">
+                    <h2 class="display-4">Backed By Professionals</h2>
+                    <p class="lead">Industry experts leading key insights.</p>
+                </div>
+            </div>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 </header>
-<!-- About-->
-<section class="about-section text-center" id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="text-white mb-4">Track Symptoms</h2>
-                <p class="text-white-50">Keep yourself safe and start tracking your symptoms today</p>
-            </div>
-        </div>
-        <img class="img-fluid" src="assets/img/ipad.png" alt="" />
-    </div>
-</section>
-<!-- Projects-->
-<section class="projects-section bg-light" id="projects">
-    <div class="container">
-        <!-- Featured Project Row-->
-        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-            <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="" /></div>
-            <div class="col-xl-4 col-lg-5">
-                <div class="featured-text text-center text-lg-left">
-                    <h4>Track Symptoms</h4>
-                    <p class="text-black-50 mb-0">Keep yourself safe and start tracking your symptoms today.</p>
-                </div>
-            </div>
-        </div>
-        <!-- Project One Row-->
-        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-            <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="" /></div>
-            <div class="col-lg-6">
-                <div class="bg-black text-center h-100 project">
-                    <div class="d-flex h-100">
-                        <div class="project-text w-100 my-auto text-center text-lg-left">
-                            <h4 class="text-white">Symptom Tracker</h4>
-                            <p class="mb-0 text-white-50">Keep yourself safe and start tracking your symptoms today.</p>
-                            <hr class="d-none d-lg-block mb-0 ml-0" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Project Two Row-->
-        <div class="row justify-content-center no-gutters">
-            <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="" /></div>
-            <div class="col-lg-6 order-lg-first">
-                <div class="bg-black text-center h-100 project">
-                    <div class="d-flex h-100">
-                        <div class="project-text w-100 my-auto text-center text-lg-right">
-                            <h4 class="text-white">Symptom Tracker</h4>
-                            <p class="mb-0 text-white-50">Keep yourself safe and start tracking your symptoms today.</p>
-                            <hr class="d-none d-lg-block mb-0 mr-0" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Signup-->
-<section class="signup-section" id="signup">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-lg-8 mx-auto text-center">
-                <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-                <form class="form-inline d-flex"><input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" placeholder="Enter email address..." /><button class="btn btn-primary mx-auto" type="submit">Subscribe</button></form>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Contact-->
-<section class="contact-section bg-black">
-        <div class="social d-flex justify-content-center align-middle p-5">
-            <a class="mx-2" href="https://github.com/Trystanr/SymptomTracker"><i class="fab fa-github"></i></a>
-        </div>
-</section>
 
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark">
+    <div class="mx-auto my-5">
+
+        <h2 class="display-5">Get Started Today</h2>
+
+        <p class="lead font-weight-normal">Create an account and start tracking your symptoms today.</p>
+        <a class="btn btn-outline-secondary" asp-area="" asp-controller="Symptoms" asp-action="">Start Tracking</a>
+
+    </div>
+</div>
+
+<div class="row position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+        <p class="icon-box">
+            <i class="fas fa-lock fa-3x"></i>
+        </p>
+        <h3 class="display-5">Secure</h3>
+        <p class="lead">Authenticate with the latest modern Authentication middleware.</p>
+    </div>
+    <div class="col-sm">
+        <p class="icon-box">
+            <i class="fas fa-fighter-jet fa-3x"></i>
+        </p>
+        <h3 class="display-5">Quick</h3>
+        <p class="lead">Spend less time waiting and more time working.</p>
+    </div>
+    <div class="col-sm">
+        <p class="icon-box">
+            <i class="fas fa-comment-dollar fa-3x"></i>
+        </p>
+        <h3 class="display-5">Free</h3>
+        <p class="lead">Thats right, logging with SymptomTracker is totally free to use.</p>
+    </div>
+    <div class="col-sm">
+    </div>
+</div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark">
+    <div class="mx-auto my-5">
+
+        <h2 class="display-5">About Symptom Tracker</h2>
+
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-sm">
+                    <p">
+                        By logging your data using Symptom Tracker, you can find a pattern, triggering your doctors's attention to a potential CoVid-19 issue. This is great because you can then be assured that it will know when you are sick and let you know when you need to take action.
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-sm">
+                    <p>
+                        A team of professionals that monitors your symptoms will set a cost for you for a subscription.  You can ask what this cost will be but your health insurance will need to cover it.  The price will be determined by your insurance and how many visits you need to be on it each month.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<div class="position-relative overflow-hidden m-md-3 text-center bg-dark">
+    <div class="mx-auto my-5">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <p">Trystan Rivers 2020 <br /><a href="https://github.com/Trystanr/SymptomTracker">Github</a></p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

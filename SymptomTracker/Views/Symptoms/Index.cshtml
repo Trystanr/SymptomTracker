@@ -33,7 +33,7 @@
         @Html.Raw(" var calendarEl = document.getElementById('calendar');")
 
         @Html.Raw(" var calendar = new FullCalendar.Calendar(calendarEl, {")
-        @Html.Raw("     height: 300,")
+        @Html.Raw("     height: 200,")
         @Html.Raw("     themeSystem: 'cyborg',")
         @Html.Raw("     defaultView: 'dayGridWeek',")
         @Html.Raw("     plugins: [ 'bootstrap','dayGrid' ],")
@@ -41,18 +41,42 @@
 
         @foreach (var Item in Model)
         {
-            @Html.Raw("         {")
-            @Html.Raw("             title: '"+Item.WellBeing+"',")
-            @Html.Raw("             url: 'Symptoms/Details/" + Item.Id+"',")
-            @Html.Raw("             start: '"+Item.RecordDate.ToShortDateString().Replace('/','-')+"'");
-            @Html.Raw("         },")
-        }
+            string wellBeingState;
 
-        @Html.Raw("     ]")
-        @Html.Raw(" });")
+            switch (Item.WellBeing)
+            {
+                case 0:
+                    wellBeingState = "Terrible";
+                    break;
+                case 20:
+                    wellBeingState = "Uneasy";
+                    break;
+                case 40:
+                    wellBeingState = "Marginal";
+                    break;
+                case 60:
+                    wellBeingState = "Okay";
+                    break;
+                case 80:
+                    wellBeingState = "Well";
+                    break;
+                default:
+                    wellBeingState = "Incredible";
+                    break;
+
+            }
+                        @Html.Raw("         {")
+                        @Html.Raw("             title: '"+ wellBeingState + "',")
+                        @Html.Raw("             url: 'Symptoms/Details/" + Item.Id+"',")
+                        @Html.Raw("             start: '"+Item.RecordDate.ToShortDateString().Replace('/','-')+"'");
+                        @Html.Raw("         },")
+                    }
+
+                        @Html.Raw("     ]")
+                   @Html.Raw(" });")
 
         @Html.Raw(" calendar.render();")
-        @Html.Raw("});")
+                   @Html.Raw("});")
     </script>
 
     @for (var i = 0; i < Model.Count(); i++)
@@ -67,16 +91,47 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" asp-action="Edit" asp-route-id="@Model.ElementAt(i).Id">Edit</a>
+                        <a class="nav-link" asp-action="Edit" asp-route-id="@Model.ElementAt(i).Id"><i class="fas fa-tools"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-action="Delete" asp-route-id="@Model.ElementAt(i).Id">Delete</a>
+                        <a class="nav-link" asp-action="Delete" asp-route-id="@Model.ElementAt(i).Id"><i class="fas fa-trash"></i></a>
                     </li>
                 </ul>
             </div>
             <div class="card-body">
-                <h5 class="card-title">@Html.DisplayFor(modelItem => Model.ElementAt(i).Title)</h5>
+                <h5 class="card-title">
+                    @{
+                        string SList = Model.ElementAt(i).SymptomList;
+                        string SOut = "";
+                        int count = 0;
+
+                        if (SList != null)
+                        {
+                            foreach (char c in SList)
+                                if (c == '1') count++;
+
+                            if (SList == "00000001" || SList == "00000000")
+                            {
+                                SOut = "0 Symptoms";
+                            }
+                            else
+                            {
+                                if (count == 1)
+                                {
+                                    SOut = "1 Symptom";
+                                }
+                                else
+                                {
+                                    SOut = count.ToString() + " Symptoms";
+                                }
+                            }
+                        }
+                    }
+
+                    @Html.Raw("<span>" + SOut + "</span>")
+                </h5>
                 <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => Model.ElementAt(i).Body)</h6>
+
                 <!--
                 <p class="card-text">@Html.DisplayFor(modelItem => Model.ElementAt(i).RecordDate)</p>
                 -->

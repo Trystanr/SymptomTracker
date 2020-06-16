@@ -12,44 +12,122 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="container mb-2">
-        <div class="row">
-            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        </div>
-    </div>
+<div class="container" id="symp-det">
 
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
+        <dt class="col-sm-3">
+            Date Recorded
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Body)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.WellBeing)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.WellBeing)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ChestPain)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ChestPain)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.RecordDate)
-        </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.RecordDate)
         </dd>
+        <hr />
+        <dt class="col-sm-3">
+            Wellbeing
+        </dt>
+        <dd class="col-sm-9">
+            @{
+                string wellBeingState;
+
+                switch (Model.WellBeing)
+                {
+                    case 0:
+                        wellBeingState = "Terrible";
+                        break;
+                    case 20:
+                        wellBeingState = "Uneasy";
+                        break;
+                    case 40:
+                        wellBeingState = "Marginal";
+                        break;
+                    case 60:
+                        wellBeingState = "Okay";
+                        break;
+                    case 80:
+                        wellBeingState = "Well";
+                        break;
+                    default:
+                        wellBeingState = "Incredible";
+                        break;
+
+                }
+            }
+            @Html.Raw(wellBeingState)
+        </dd>
+        <hr />
+        <dt class="col-sm-3">
+            Were you experiencing serious symptoms?
+        </dt>
+        <dd class="col-sm-9">
+            @{
+                var sChestPain = "No";
+                if (Model.ChestPain)
+                {
+                    sChestPain = "Yes";
+                }
+            }
+            @Html.Raw(sChestPain)
+        </dd>
+        <hr />
+        <dt class="col-sm-3">
+            Other symptoms experienced
+        </dt>
+        <dd class="col-sm-9">
+            <ul style="padding-left: 0; margin-bottom: 0;">
+                @{
+                    var sSymptomList = "";
+                    for (int i = 0; i < Model.SymptomList.Length; i++)
+                    {
+                        if (Model.SymptomList[i].ToString() == "1")
+                        {
+                            sSymptomList += "<li>";
+                            switch (i)
+                            {
+                                case 0:
+                                    sSymptomList += "Fever or chills";
+                                    break;
+                                case 1:
+                                    sSymptomList += "Mild or moderate difficulty breathing";
+                                    break;
+                                case 2:
+                                    sSymptomList += "New or worsening cough";
+                                    break;
+                                case 3:
+                                    sSymptomList += "Sustained loss of smell, taste, or appetite";
+                                    break;
+                                case 4:
+                                    sSymptomList += "Sore throat";
+                                    break;
+                                case 5:
+                                    sSymptomList += "Vomiting or diarrhea";
+                                    break;
+                                case 6:
+                                    sSymptomList += "Aching throughout the body";
+                                    break;
+                                default:
+                                    sSymptomList += "No Symptoms";
+                                    break;
+                            }
+                            sSymptomList += "</li>";
+
+                        }
+                    }
+                }
+
+                @Html.Raw(sSymptomList)
+            </ul>
+        </dd>
+        <hr />
+        <dt class="col-sm-3">
+            Notes
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+
+
+
+
     </dl>
 
 </div>

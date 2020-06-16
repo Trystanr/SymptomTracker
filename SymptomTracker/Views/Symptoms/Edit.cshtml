@@ -4,36 +4,149 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
 
-<h4>Symptom</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Body" class="control-label"></label>
-                <input asp-for="Body" class="form-control" />
-                <span asp-validation-for="Body" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="jumbotron">
+    <div class="container">
+        <a asp-action="Index">< Back to Symptom List</a>
+        <h1 class="display-4 pt-lg-5">Edit</h1>
+        <p class="lead">Edit the note for your symptom for (this day).</p>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<div class="container" id="symp-det">
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <dl class="row">
+        <dt class="col-sm-3">
+            Date Recorded
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RecordDate)
+        </dd>
+        <hr />
+        <dt class="col-sm-3">
+            Wellbeing
+        </dt>
+        <dd class="col-sm-9">
+            @{
+                string wellBeingState;
+
+                switch (Model.WellBeing)
+                {
+                    case 0:
+                        wellBeingState = "Terrible";
+                        break;
+                    case 20:
+                        wellBeingState = "Uneasy";
+                        break;
+                    case 40:
+                        wellBeingState = "Marginal";
+                        break;
+                    case 60:
+                        wellBeingState = "Okay";
+                        break;
+                    case 80:
+                        wellBeingState = "Well";
+                        break;
+                    default:
+                        wellBeingState = "Incredible";
+                        break;
+
+                }
+            }
+            @Html.Raw(wellBeingState)
+        </dd>
+        <hr />
+        <dt class="col-sm-3">
+            Were you experiencing serious symptoms?
+        </dt>
+        <dd class="col-sm-9">
+            @{
+                var sChestPain = "No";
+                if (Model.ChestPain)
+                {
+                    sChestPain = "Yes";
+                }
+            }
+            @Html.Raw(sChestPain)
+        </dd>
+        <hr />
+        <dt class="col-sm-3">
+            Other symptoms experienced
+        </dt>
+        <dd class="col-sm-9">
+            <ul style="padding-left: 0; margin-bottom: 0;">
+                @{
+                    var sSymptomList = "";
+                    for (int i = 0; i < Model.SymptomList.Length; i++)
+                    {
+                        if (Model.SymptomList[i].ToString() == "1")
+                        {
+                            sSymptomList += "<li>";
+                            switch (i)
+                            {
+                                case 0:
+                                    sSymptomList += "Fever or chills";
+                                    break;
+                                case 1:
+                                    sSymptomList += "Mild or moderate difficulty breathing";
+                                    break;
+                                case 2:
+                                    sSymptomList += "New or worsening cough";
+                                    break;
+                                case 3:
+                                    sSymptomList += "Sustained loss of smell, taste, or appetite";
+                                    break;
+                                case 4:
+                                    sSymptomList += "Sore throat";
+                                    break;
+                                case 5:
+                                    sSymptomList += "Vomiting or diarrhea";
+                                    break;
+                                case 6:
+                                    sSymptomList += "Aching throughout the body";
+                                    break;
+                                default:
+                                    sSymptomList += "No Symptoms";
+                                    break;
+                            }
+                            sSymptomList += "</li>";
+
+                        }
+                    }
+                }
+
+                @Html.Raw(sSymptomList)
+            </ul>
+        </dd>
+        <hr />
+        <dt class="col-sm-3">
+            Notes
+        </dt>
+
+        <dd class="col-sm-9">
+
+            <form asp-action="Edit">
+
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="WellBeing" />
+                <input type="hidden" asp-for="ChestPain" />
+                <input type="hidden" asp-for="SymptomList" />
+                <input type="hidden" asp-for="RecordDate" />
+                <input type="hidden" asp-for="OwnerId" />
+                <input type="hidden" asp-for="Owner" /> 
+                <div class="form-group">
+                    <textarea asp-for="Body" class="form-control"></textarea>
+                    <span asp-validation-for="Body" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </dd>
+
+    </dl>
+</div> 
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

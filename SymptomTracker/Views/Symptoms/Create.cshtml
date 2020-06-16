@@ -16,28 +16,18 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-8">
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Title" class="control-label"></label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Body" class="control-label"></label>
-                    <input asp-for="Body" class="form-control" />
-                    <span asp-validation-for="Body" class="text-danger"></span>
-                </div>
 
                 <div class="form-group">
-                    <label asp-for="RecordDate" class="control-label"></label>
-                    <input asp-for="RecordDate" class="form-control" type="date" />
+                    <label asp-for="RecordDate" class="control-label">Date</label>
+                    <input asp-for="RecordDate" class="form-control" type="date" required />
                     <span asp-validation-for="RecordDate" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">How are you feeling today?</label>
+                    <label class="control-label">How are you feeling?</label>
                     <label for="wb-range" style="width: 100%">
                         <input class="form-control-range" type="range" name="wb-range" id="wb-range" min="0" max="100" step="20" value="60" data-status="3" />
                     </label>
@@ -69,12 +59,56 @@
                     </p>
 
                     <fieldset id="RG-CP">
-                        <input type="radio" value="true" id="RG-CP-2" asp-for="ChestPain">
+                        <input type="radio" value="true" id="RG-CP-2" asp-for="ChestPain" required />
                         <label for="RG-CP-2">Yes</label>
-                        <input type="radio" value="false" id="RG-CP-1" asp-for="ChestPain">
+                        <input type="radio" value="false" id="RG-CP-1" asp-for="ChestPain" />
                         <label for="RG-CP-1">No</label>
                     </fieldset>
                     <span asp-validation-for="ChestPain" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <p class="control-label" style="margin-bottom:4px">
+                        Are you experiencing any of these symptoms?
+                        <span>Select all that apply.</span>
+                    </p>
+
+                    <fieldset id="CG-SL">
+                        <input type="checkbox" value="false" id="CG-SL-1" />
+                        <label for="CG-SL-1">Fever or chills</label>
+
+                        <input type="checkbox" value="true" id="CG-SL-2" />
+                        <label for="CG-SL-2">Mild or moderate difficulty breathing</label>
+
+                        <input type="checkbox" value="true" id="CG-SL-3" />
+                        <label for="CG-SL-3">New or worsening cough</label>
+
+                        <input type="checkbox" value="true" id="CG-SL-4" />
+                        <label for="CG-SL-4">Sustained loss of smell, taste, or appetite</label>
+
+                        <input type="checkbox" value="true" id="CG-SL-5" />
+                        <label for="CG-SL-5">Sore throat</label>
+
+                        <input type="checkbox" value="true" id="CG-SL-6" />
+                        <label for="CG-SL-6">Vomiting or diarrhea</label>
+
+                        <input type="checkbox" value="true" id="CG-SL-7" />
+                        <label for="CG-SL-7">Aching throughout the body</label>
+
+                        <input type="checkbox" value="true" id="CG-SL-8" />
+                        <label for="CG-SL-8">None of the above</label>
+
+                    </fieldset>
+
+                    <input id="sl-input" asp-for="SymptomList" type="hidden" value="00000000" style="" />
+                    <span asp-validation-for="SymptomList" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Body" class="control-label">Notes</label>
+                    <textarea asp-for="Body" class="form-control"></textarea>
+                    <span asp-validation-for="Body" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
