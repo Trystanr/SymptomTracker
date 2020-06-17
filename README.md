@@ -1,41 +1,124 @@
-# SymptomTracker
-### IDV300 Term 2
+# Interaction Development 300
 
-Track Symptoms
-Keep yourself safe and start tracking your symptoms today.
+<h3 align="center">Trystan Rivers 2020</h3>
+<br />
+<br />
+<p align="center">
+  
+  <h3 align="center">SymptomTracker</h3>
+
+  <p align="center">
+    daily symptom tracking
+    <br />
+    <a href="#about-the-project"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://youtu.be/2GKO030cIpA">View Demo</a>
+    ·
+    <a href="https://www.youtube.com/watch?v=fu3nwZ_8Yvw">Advert Spot</a>
+  </p>
+</p>
+
+## Table of Contents
+
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [App Features](#app-features)
+* [User Guide](#user-guide)
+  * [Installing and running the project](#installing-and-running-the-project)
+  * [Install Prerequisites](#install-prerequisites)
+  * [Migrate the Database](#migrate-the-Database)
+  * [Update the Database](#update-the-database)
+  * [Using the app](#using-the-app)
+* [Demo Video](#demo-video)
+* [Extremely helpful projects](#extremely-helpful-projects)
 
 
+## About The Project
+
+Are you interested in logging your COVID symptoms daily?
+
+SymptomTracker is a serverside .NET application which allows a user to create an account and log their symtpms for the day.
+
+The brief for this project was to create a COVID-19 Relief App with CRUD functionality.
+
+### Built With
+
+#### Frameworks
+* EntityFrameWorkCore
+* SqlServer
+* Identity
+* Bootstrap
+* FullCalender
+* Browserlink
+* Timeago
+* Fontawesome 5
+* jQuery
+
+#### Languages
+* C#
+* CSHTML
+* Javascript
+* CSS
+
+
+### App Features:
+* Model View Controller
+* Authentication
+* CRUD
+* COVID-19 Symptom Input
+* Full landing website for marketing and brand development
+* Calendar view
+* Reactive language (timeago)
+* UX Experiences
+* Microinteractions
+
+
+### User Guide
+#### Installing and running the project
+
+1. Clone this repo to your local Windows machine.
+1. Open SymptomTracker.sln in Visual Studio.
+1. Install prerequisite Nuget packages (see below). 
+1. Migrate and initialize the database (see below). 
+1. Select SymptomTracker as your run target.
+1. Ensure BrowserLink is set up to your browser.
+1. Run (Ctrl+F5).
+1. The project will be running on your web browser.
 
 #### Install Prerequisites
 `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
 
 `Install-Package Microsoft.EntityFrameworkCore.Tools`
 
+`Install-Package Microsoft.VisualStudio.Web.BrowserLink`
+
 #### Migrate the Database
 `Add-Migration InitialCreate`
 
+#### Update the Database
 `Update-Database`
 
-https://dribbble.com/shots/8574337/attachments/841004?mode=media
-https://stackoverflow.com/questions/42095299/visual-studio-do-not-open-new-browser-instance/42674555
-https://docs.microsoft.com/en-us/aspnet/core/client-side/using-browserlink?view=aspnetcore-3.1
-https://stackoverflow.com/questions/40729535/how-to-stop-browser-closing-automatically-when-you-stop-debugging-on-vs-2017
-https://gitlab.com/RuanDeNecker/dotnetcore-example-todo/
+### User Guide
+#### Using the app
+
+1. Create an account by clicking on Register.
+1. Fill in the Registration form.
+1. Log in using your email and password from registration.
+1. Click on log symptom and fill in the form to log your symptoms for the day.
+1. You will see logged symptoms as cards.
 
 
-https://www.chihealth.com/en/patients-visitors/coronavirus-covid-19/Coronavirusquestionnaire.html
-https://www.apple.com/covid19/
-https://www.google.com/search?q=coronavirus+screening+questions&rlz=1C1MSIM_enZA738ZA738&hl=en&sxsrf=ALeKk02Ay88-BeEBVKqdNwAH9FSWGHs3CA:1592233661608&source=lnms&tbm=isch&sa=X&ved=2ahUKEwius7LOjITqAhXMaRUIHUJqAqwQ_AUoAXoECBUQAw&biw=1920&bih=937#imgrc=15QKHwdCkSFK6M&imgdii=Azc3SnbBgh7BoM
+### Demo Video
+[Advert Spot](https://www.youtube.com/watch?v=fu3nwZ_8Yvw)
 
-Used BrowserLink in development environment
-
-
-TODO: 
-1. Remove development environment
-1. Remove default login values
+[Project Demo](https://youtu.be/2GKO030cIpA)
 
 
-Used technologies
-1. FullCalender
-1. Browserlink
-1. Timeago
+### Extremely helpful projects: 
+I couldn't have completed my own project without the core principles and frameworks these apps taught.
+
+
+[DotNetCore Example Todo](https://gitlab.com/RuanDeNecker/dotnetcore-example-todo/) - Provided a framework for Dot Net Core MVC.
+
+[Apple Covid Tool](https://www.apple.com/covid19/) - Provided a framework of Covid related questions.
